@@ -16,8 +16,14 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/main.css"> -->
     <!-- endbuild -->
+    <!-- Pingendo creation -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </head>
   <body ng-app="inclusaoDigitalApp">
     <!--[if lt IE 7]>
@@ -25,7 +31,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -60,14 +66,17 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
     <script src="scripts/angularfire/config.js"></script>
     <script src="scripts/services/firebase.js"></script>
     <script src="scripts/services/login.js"></script>
     <script src="scripts/angularfire/simpleLoginTools.js"></script>
     <script src="scripts/angularfire/routesecurity.js"></script>
     <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/apostilas.js"></script>
+    <script src="scripts/controllers/apresentacoes.js"></script>
+    <script src="scripts/controllers/atas.js"></script>
         <!-- endbuild -->
 </body>
 </html>

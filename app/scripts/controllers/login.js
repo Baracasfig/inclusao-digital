@@ -8,6 +8,7 @@ angular.module('inclusaoDigitalApp')
     $scope.confirm = null;
     $scope.createMode = false;
     $scope.user = null;
+    $scope.isLogged = false;
 
     $scope.login = function(service) {
       simpleLogin.login(service, function(err) {

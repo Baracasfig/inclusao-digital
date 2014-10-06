@@ -77,3 +77,13 @@ body {
     border-bottom: 0;
   }
 }
+
+#footer {
+    width: 900px;
+    height: 100px;
+    background:white;
+    margin-top: 100px;    
+    bottom: 0;
+    clear:both;    
+    position: absolute;
+}

@@ -21,6 +21,21 @@ angular.module('inclusaoDigitalApp', [
         templateUrl: 'views/login.html',
         controller: 'LoginController'
       })
+      .when('/apresentacoes', {
+        authRequired: false, // if true, must log in before viewing this page
+        templateUrl: 'views/apresentacoes.html',
+        controller: 'ApresentacoesCtrl'
+      })
+      .when('/apostilas', {
+        authRequired: true, // if true, must log in before viewing this page
+        templateUrl: 'views/apostilas.html',
+        controller: 'ApostilasCtrl'
+      })
+      .when('/atas', {
+        authRequired: true, // if true, must log in before viewing this page
+        templateUrl: 'views/atas.html',
+        controller: 'AtasCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -1,0 +1,9 @@
+{
+  "firebase": "blistering-torch-9877",
+  "public": "app",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

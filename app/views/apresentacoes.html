@@ -25,31 +25,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-        <h2 class="text-center">Inclusão Digital</h2>
+      <div class="page-header">
+        <h1>Apresentações&nbsp;
+          <small>aula a aula</small>
+        </h1>
+      </div>
     </div>
   </div>
+  <div class="row"></div>
   <div class="row">
-    <div class="col-md-4 text-center" style="">
-      <h4 class="text-center">Apresentações</h2>
-      <img src="../images/ppt.png" class="img-responsive">
+    <div class="col-md-4 text-center" style="" ng-repeat="aula in aulas">
+      <h2 class="text-center">{{aula}}</h2>
+      <a href="#/apresentacoes"><img src="../images/ppt.png" class="img-responsive"></a>
       <p>Acesse aos aulas no formato ppt do google drive!</p>
-      <a class="btn btn-primary" href="#/apresentacoes">View details</a>
     </div>
-    <div class="col-md-4 text-center">
-      <h4>Apostilas</h2>
-      <img src="../images/apostila.png" class="img-responsive">
-      <p style="">Acesse aos aulas no formato doc do google drive!</p>
-      <a class="btn btn-primary" href="#/apostilas">View details</a>
-    </div>
-    <div class="col-md-4 text-center">
-      <h4>Atas</h2>
-      <img src="../images/ata.png" class="img-responsive">
-      <p>Coloque aqui as atas de sua última aula!</p>
-      <a class="btn btn-primary" href="#/atas">View details</a>
-    </div>
-  </div>
-
-  <div id="footer">
-  <img class="center-block img-responsive" width="50%" src="../images/patrocinadores ID.png" class="img-responsive">
   </div>
 </div>
