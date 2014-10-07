@@ -36,6 +36,11 @@ angular.module('inclusaoDigitalApp', [
         templateUrl: 'views/atas.html',
         controller: 'AtasCtrl'
       })
+      .when('/mensagens', {
+        authRequired: true, // if true, must log in before viewing this page
+        templateUrl: 'views/mensagens.html',
+        controller: 'MensagensCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

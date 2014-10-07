@@ -1,0 +1,142 @@
+<div class="navbar navbar-default navbar-static-top">
+  <style>
+    .body{padding-top:70px}
+  </style>
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Inclusão Digital</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right" ng-controller="LoginController">
+        <li><a href="#/mensagens">Mensagens</a></li>
+        <li ng-cloak ng-show-auth="login"><a href="#" ng-click="logout()">Log Out</a></li>
+        <li ng-cloak ng-show-auth="['logout','error']"><a href="#/login">Log In</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-pills" style="">
+        <li ng-class="{active: messageType == 'recebidas'}">
+          <a href="" ng-click="isReceivedMessage()">Recebidas</a>
+        </li>
+        <li ng-class="{active: messageType == 'enviadas'}">
+          <a href="" ng-click="isSentMessage()">Enviadas</a>
+        </li>
+        <li ng-class="{active: messageType =='compor'}">
+          <a href="" ng-click="isComposedMessage()">Compor</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr>
+    </div>
+  </div>
+  <div class="container" ng-show="messageType == 'recebidas'">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Assunto</th>
+              <th>Autor</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Recebidas</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" ng-show="messageType == 'enviadas'">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Assunto</th>
+              <th>Autor</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Enviadas</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" ng-show="messageType == 'compor'">
+    <div class="row">
+      <div class="col-md-12">
+        <form role="form">
+          <div class="form-group"><label>Destinatários(s)</label>
+            <select class="form-control">
+              <option>Todos os participantes</option>
+              <option>Mariani</option>
+              <option>Lucas</option>
+              <option>João</option>
+            </select></div>
+          <div class="form-group">
+            <label class="control-label" for="exampleInputPassword1">Assunto</label>
+            <input class="form-control" id="exampleInputPassword1" placeholder="Assunto" type="password">
+          </div>
+          <div class="form-group">
+            <label>Conteúdo</label>
+            <textarea class="form-control" placeholder="Conteúdo"></textarea>
+          </div>
+        <div class="form-group"><div class="checkbox"><input type="checkbox"><label>Enviar e-mail para destinatário(s)</label></div></div><button type="submit" class="btn btn-success">Submit</button</form>
+      </div>
+  </div>
+</div>
