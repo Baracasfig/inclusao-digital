@@ -14,7 +14,8 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right" ng-controller="LoginController">
-        <li><a href="#/mensagens">Mensagens</a></li>
+      <!-- TODO: input person name as "Olá ad@ad.com" and then log out inside it -->
+        <li ng-cloak ng-show-auth="login"><a href="#/mensagens">Mensagens</a></li>
         <li ng-cloak ng-show-auth="login"><a href="#" ng-click="logout()">Log Out</a></li>
         <li ng-cloak ng-show-auth="['logout','error']"><a href="#/login">Log In</a></li>
       </ul>

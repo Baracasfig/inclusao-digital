@@ -23,6 +23,7 @@
 </div>
 
 <div class="container">
+
   <div class="row">
     <div class="col-md-12">
       <ul class="nav nav-pills" style="">
@@ -43,7 +44,9 @@
       <hr>
     </div>
   </div>
-  <div class="container" ng-show="messageType == 'recebidas'">
+
+
+  <div ng-show="messageType == 'recebidas' &amp;&amp; !messageDetail">
     <div class="row">
       <div class="col-md-12">
         <table class="table">
@@ -58,19 +61,19 @@
           <tbody>
             <tr>
               <td>1</td>
-              <td>Recebidas</td>
+              <td><a ng-click="showMessageDetail()">Recebidas</a></td>
               <td>Otto</td>
               <td>@mdo</td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Jacob</td>
+              <td><a ng-click="showMessageDetail()">Recebidas</a></td>
               <td>Thornton</td>
               <td>@fat</td>
             </tr>
             <tr>
               <td>3</td>
-              <td>Larry</td>
+              <td><a ng-click="showMessageDetail()">Recebidas</a></td>
               <td>the Bird</td>
               <td>@twitter</td>
             </tr>
@@ -80,7 +83,7 @@
     </div>
   </div>
 
-  <div class="container" ng-show="messageType == 'enviadas'">
+  <div ng-show="messageType == 'enviadas' &amp;&amp; !messageDetail">
     <div class="row">
       <div class="col-md-12">
         <table class="table">
@@ -95,19 +98,19 @@
           <tbody>
             <tr>
               <td>1</td>
-              <td>Enviadas</td>
+              <td><a ng-click="showMessageDetail()">Enviadas</a></td>
               <td>Otto</td>
               <td>@mdo</td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Jacob</td>
+              <td><a ng-click="showMessageDetail()">Enviadas</a></td>
               <td>Thornton</td>
               <td>@fat</td>
             </tr>
             <tr>
               <td>3</td>
-              <td>Larry</td>
+              <td><a ng-click="showMessageDetail()">Enviadas</a></td>
               <td>the Bird</td>
               <td>@twitter</td>
             </tr>
@@ -117,7 +120,7 @@
     </div>
   </div>
 
-  <div class="container" ng-show="messageType == 'compor'">
+  <div ng-show="messageType == 'compor' &amp;&amp; !messageDetail">
     <div class="row">
       <div class="col-md-12">
         <form role="form">
@@ -127,16 +130,45 @@
               <option>Mariani</option>
               <option>Lucas</option>
               <option>João</option>
-            </select></div>
+            </select>
+          </div>
           <div class="form-group">
             <label class="control-label" for="exampleInputPassword1">Assunto</label>
-            <input class="form-control" id="exampleInputPassword1" placeholder="Assunto" type="password">
+            <input class="form-control" id="exampleInputPassword1" placeholder="Assunto">
           </div>
           <div class="form-group">
             <label>Conteúdo</label>
             <textarea class="form-control" placeholder="Conteúdo"></textarea>
           </div>
-        <div class="form-group"><div class="checkbox"><input type="checkbox"><label>Enviar e-mail para destinatário(s)</label></div></div><button type="submit" class="btn btn-success">Submit</button</form>
+        <div class="form-group">
+          <div class="checkbox">
+            <input type="checkbox"><label>Enviar e-mail para destinatário(s)</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button></form>
       </div>
+    </div>
   </div>
+
+  <div ng-show="messageDetail == true">
+    <div class="row">
+      <div class="col-md-12">
+        <b>Assunto :</b> {{message.subject}}
+        <br></br>
+        <b>Autor :</b> {{message.author}}
+        <br></br>
+        <b>Data :</b> {{message.day}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+      </div>
+    </div>
+
+    {{message.contentOfMessage}}
+
+  </div>
+
 </div>

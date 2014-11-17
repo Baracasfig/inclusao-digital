@@ -8,7 +8,8 @@ angular.module('inclusaoDigitalApp', [
   'firebase',
   'angularfire.firebase',
   'angularfire.login',
-  'simpleLoginTools'
+  'simpleLoginTools',
+  'LocalStorageModule'
 ])
   .config(function ($routeProvider) {
     $routeProvider

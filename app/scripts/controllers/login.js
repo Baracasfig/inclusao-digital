@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('inclusaoDigitalApp')
-  .controller('LoginController', function($scope, simpleLogin, $location) {
+  .controller('LoginController', function($scope, simpleLogin, $location, localStorageService) {
     $scope.pass = null;
     $scope.err = null;
     $scope.email = null;
@@ -25,6 +25,7 @@ angular.module('inclusaoDigitalApp')
         $scope.err = 'Please enter a password';
       }
       else {
+        localStorageService.set('user.email', $scope.email);
         simpleLogin.loginPassword($scope.email, $scope.pass, function(err, user) {
           $scope.err = err? err + '' : null;
           if( !err && cb ) {
