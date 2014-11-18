@@ -52,27 +52,23 @@
         <table class="table">
           <thead>
             <tr>
-              <th>#</th>
               <th>Assunto</th>
               <th>Autor</th>
               <th>Data</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
+            <tr ng-repeat="row in messages">
               <td><a ng-click="showMessageDetail()">Recebidas</a></td>
               <td>Otto</td>
               <td>@mdo</td>
             </tr>
             <tr>
-              <td>2</td>
               <td><a ng-click="showMessageDetail()">Recebidas</a></td>
               <td>Thornton</td>
               <td>@fat</td>
             </tr>
             <tr>
-              <td>3</td>
               <td><a ng-click="showMessageDetail()">Recebidas</a></td>
               <td>the Bird</td>
               <td>@twitter</td>
@@ -89,30 +85,16 @@
         <table class="table">
           <thead>
             <tr>
-              <th>#</th>
               <th>Assunto</th>
-              <th>Autor</th>
+              <th>Destinatário</th>
               <th>Data</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td><a ng-click="showMessageDetail()">Enviadas</a></td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><a ng-click="showMessageDetail()">Enviadas</a></td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><a ng-click="showMessageDetail()">Enviadas</a></td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+            <tr ng-repeat="row in messages">
+              <td><a ng-click="showMessageDetail()">{{row.subject}}</a></td>
+              <td>{{row.receiver}}</td>
+              <td>{{row.contentOfMessage}}</td>
             </tr>
           </tbody>
         </table>
@@ -125,7 +107,7 @@
       <div class="col-md-12">
         <form role="form">
           <div class="form-group"><label>Destinatários(s)</label>
-            <select class="form-control">
+            <select class="form-control" ng-model="message.receiver">
               <option>Todos os participantes</option>
               <option>Mariani</option>
               <option>Lucas</option>
@@ -134,18 +116,18 @@
           </div>
           <div class="form-group">
             <label class="control-label" for="exampleInputPassword1">Assunto</label>
-            <input class="form-control" id="exampleInputPassword1" placeholder="Assunto">
+            <input class="form-control" id="exampleInputPassword1" placeholder="Assunto" ng-model="message.subject">
           </div>
           <div class="form-group">
             <label>Conteúdo</label>
-            <textarea class="form-control" placeholder="Conteúdo"></textarea>
+            <textarea class="form-control" placeholder="Conteúdo" ng-model="message.contentOfMessage"></textarea>
           </div>
         <div class="form-group">
           <div class="checkbox">
             <input type="checkbox"><label>Enviar e-mail para destinatário(s)</label>
           </div>
         </div>
-        <button type="submit" class="btn btn-success">Submit</button></form>
+        <button type="submit" class="btn btn-success" ng-click="sendMessage()">Submit</button></form>
       </div>
     </div>
   </div>
