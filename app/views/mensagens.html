@@ -46,7 +46,7 @@
   </div>
 
 
-  <div ng-show="messageType == 'recebidas' &amp;&amp; !messageDetail">
+  <div ng-show="messageType == 'enviadas' &amp;&amp; !messageDetail">
     <div class="row">
       <div class="col-md-12">
         <table class="table">
@@ -58,20 +58,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="row in messages">
-              <td><a ng-click="showMessageDetail()">Recebidas</a></td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td><a ng-click="showMessageDetail()">Recebidas</a></td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td><a ng-click="showMessageDetail()">Recebidas</a></td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+            <tr ng-repeat="row in received">
+              <td><a ng-click="showMessageDetail()">{{row.subject}}</a></td>
+              <td>{{row.receiver}}</td>
+              <td>{{row.contentOfMessage}}</td>
             </tr>
           </tbody>
         </table>
@@ -91,7 +81,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="row in messages">
+            <tr ng-repeat="row in sent">
               <td><a ng-click="showMessageDetail()">{{row.subject}}</a></td>
               <td>{{row.receiver}}</td>
               <td>{{row.contentOfMessage}}</td>

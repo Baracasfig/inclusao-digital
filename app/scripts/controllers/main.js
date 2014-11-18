@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('inclusaoDigitalApp')
-	.controller('MainCtrl', function ($scope, localStorageService) {
+	.controller('MainCtrl', function ($scope) {
 		$scope.slideType = 1;
 		$scope.user = {};
 		$scope.appNome = 'ID';
@@ -24,8 +24,7 @@ angular.module('inclusaoDigitalApp')
 			}
 		};
 
-		$scope.userEmail = localStorageService.get('email');
-
-		console.log($scope.userEmail);
+		//user email
+		// $scope.userEmail = localStorageService.get('email');
 
 	});

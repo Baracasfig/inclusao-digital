@@ -1,27 +1,46 @@
 'use strict';
 
 angular.module('inclusaoDigitalApp')
-  .controller('MensagensCtrl', function ($scope, localStorageService, $firebase) {
+  .controller('MensagensCtrl', function ($scope, localStorageService) {
     $scope.messageType = 'recebidas';
     $scope.sendEmail = false;
     $scope.messageDetail = false;
     $scope.message = {};
     $scope.ref = new Firebase('https://blistering-torch-9877.firebaseio.com');
-    $scope.sync = $firebase($scope.ref);
     $scope.messagesRef = $scope.ref.child('messages');
-
-    $scope.list = $scope.sync.$asArray();
-    $scope.list.$loaded().then(function() {
-         console.log("list has " + list.length + " items");
-      });
-    $scope.limited = $firebase($scope.messagesRef.limitToLast(10))
-
-    $scope.limited.on("value", function(snapshot) {
-      $scope.messages = snapshot.val();
-    });
 
     // identify the author
     $scope.message.author = localStorageService.get('email');
+
+    // $scope.sync = $firebase($scope.ref);
+    // $scope.limited = $firebase($scope.ref.limitToLast(10));
+    // $scope.list = $scope.limited.$asArray();
+
+    // $scope.queryRef = $scope.ref.limitToLast(2);
+
+    $scope.sent = {};
+    $scope.received = {};
+
+    $scope.refreshMessages = function () {
+      $scope.ref.on('child_added', function(snapshot) {
+        $scope.messages = snapshot.val();
+        var j = 0;
+        var k = 0;
+        for (var key in $scope.messages) {
+          var obj = $scope.messages[key];
+          if (obj.author === $scope.message.author) {
+            $scope.sent[j] = obj;
+            j = j+1;
+          }
+          if (obj.receiver === $scope.message.author) {
+            $scope.received[k] = obj;
+            k = k+1;
+          }
+        }
+      });
+    };
+    
+
 
     $scope.isSentMessage = function() {
         $scope.messageType = 'enviadas';
@@ -53,11 +72,10 @@ angular.module('inclusaoDigitalApp')
       $scope.message.receiver = null;
       $scope.message.subject = null;
       $scope.message.contentOfMessage = null;
+      $scope.refreshMessages();
     };
       
-
-
-
+    $scope.refreshMessages();
     // message example
 
 
