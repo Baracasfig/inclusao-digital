@@ -1,3 +1,5 @@
+/* global Firebase */
+
 'use strict';
 
 angular.module('inclusaoDigitalApp')
@@ -48,7 +50,6 @@ angular.module('inclusaoDigitalApp')
         $scope.users = snapshot.val();
       });
     };
-    
 
 
     $scope.isSentMessage = function() {
@@ -85,7 +86,7 @@ angular.module('inclusaoDigitalApp')
       $scope.message.contentOfMessage = null;
       $scope.refreshMessages();
     };
-      
+
     $scope.refreshMessages();
     $scope.getUsers();
 
