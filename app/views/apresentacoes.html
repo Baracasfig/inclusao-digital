@@ -9,11 +9,27 @@
     </div>
   </div>
   <div class="row"></div>
+
   <div class="row">
-    <div class="col-md-4 text-center" style="" ng-repeat="aula in aulas">
-      <h2 class="text-center">{{aula}}</h2>
-      <a href="#/apresentacoes"><img src="../images/ppt.png" class="img-responsive"></a>
-      <p>Acesse aos aulas no formato ppt do google drive!</p>
+    <div class="col-md-4" ng-repeat="apres in aulas">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a target="_blank" href="{{apres.url}}">{{apres.name}}</a>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <p>Um pouco sobre essa apresentação</p>
+          <button type="button" class="close" ng-click="apresentacoes.$remove(apres)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <a class="btn btn-primary" lk-google-picker picker-files="uploadedFiles">Escolher arquivos</a>
+    </div>
+  </div>
+
 </div>
