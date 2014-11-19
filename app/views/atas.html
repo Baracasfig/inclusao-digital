@@ -33,12 +33,27 @@
       </div>
     </div>
   </div>
-  <div class="row"></div>
   <div class="row">
-    <div class="col-md-4 text-center" style="" ng-repeat="aula in aulas">
-      <h2 class="text-center">{{aula}}</h2>
-      <a href="#/atas"><img src="../images/ata.png" class="img-responsive"></a>
-      <p>Coloque aqui as atas de sua última aula!</p>
+
+</div>
+<div class="row">
+  <div class="col-md-4" ng-repeat="ata in aulas">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a target="_blank" href="{{ata.url}}">{{ata.name}}</a>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <button type="button" class="close" ng-click="aulas.$remove(ata)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <a class="btn btn-primary" lk-google-picker picker-files="uploadedFiles">Escolher arquivos</a>
+  </div>
+</div>
 </div>

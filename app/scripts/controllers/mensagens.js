@@ -1,3 +1,5 @@
+/* global Firebase */
+
 'use strict';
 
 angular.module('inclusaoDigitalApp')
@@ -39,7 +41,7 @@ angular.module('inclusaoDigitalApp')
         }
       });
     };
-    
+
 
 
     $scope.isSentMessage = function() {
@@ -74,7 +76,7 @@ angular.module('inclusaoDigitalApp')
       $scope.message.contentOfMessage = null;
       $scope.refreshMessages();
     };
-      
+
     $scope.refreshMessages();
     // message example
 
