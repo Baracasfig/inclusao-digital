@@ -22,6 +22,11 @@ angular.module('inclusaoDigitalApp', [
         templateUrl: 'views/login.html',
         controller: 'LoginController'
       })
+      .when('/cadastro', {
+        authRequired: true, // if true, must log in before viewing this page
+        templateUrl: 'views/cadastro.html',
+        controller: 'LoginController'
+      })
       .when('/apresentacoes', {
         authRequired: false, // if true, must log in before viewing this page
         templateUrl: 'views/apresentacoes.html',

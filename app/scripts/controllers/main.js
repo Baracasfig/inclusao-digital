@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('inclusaoDigitalApp')
-	.controller('MainCtrl', function ($scope) {
+	.controller('MainCtrl', function ($scope, localStorageService) {
 		$scope.slideType = 1;
-		$scope.user = {};
-		$scope.appNome = 'ID';
+		$scope.isAdmin = false;
 
 		$scope.prevSlide = function() {
 			if($scope.slideType > 1){
@@ -25,6 +24,10 @@ angular.module('inclusaoDigitalApp')
 		};
 
 		//user email
-		// $scope.userEmail = localStorageService.get('email');
+		$scope.userEmail = localStorageService.get('user.email');
+
+		if($scope.userEmail == "baracasfig@gmail.com"){
+			$scope.isAdmin = true;
+		}
 
 	});

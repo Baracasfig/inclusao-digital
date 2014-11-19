@@ -10,6 +10,9 @@ angular.module('inclusaoDigitalApp')
     $scope.user = null;
     $scope.isLogged = false;
 
+    $scope.ref = new Firebase('https://inclusao-digital.firebaseio.com');
+    $scope.usersRef = $scope.ref.child('users');
+
     $scope.login = function(service) {
       simpleLogin.login(service, function(err) {
         $scope.err = err? err + '' : null;
@@ -59,13 +62,24 @@ angular.module('inclusaoDigitalApp')
           }
           else {
             // must be logged in before I can write to my profile
-            $scope.login(function() {
-              simpleLogin.createProfile(user.uid, user.email);
-              $location.path('/account');
-            });
+            simpleLogin.createProfile(user.uid, user.email);
+            $scope.email = null;
+            $scope.pass = null;
+            $scope.confirm = null;
           }
         });
       }
     };
+
+    $scope.firstPartOfEmail = function(email) {
+      return $scope.ucfirst(email.substr(0, email.indexOf('@'))||'');
+    }
+
+    $scope.ucfirst = function(str) {
+      // credits: http://kevin.vanzonneveld.net
+      str += '';
+      var f = str.charAt(0).toUpperCase();
+      return f + str.substr(1);
+    }
 
   });

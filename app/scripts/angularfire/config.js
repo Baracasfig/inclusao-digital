@@ -14,4 +14,4 @@ angular.module('inclusaoDigitalApp')
   .constant('loginProviders', 'facebook,password')
 
   // your Firebase URL goes here
-  .constant('FBURL', 'https://blistering-torch-9877.firebaseio.com');
+  .constant('FBURL', 'https://inclusao-digital.firebaseio.com');

@@ -6,11 +6,14 @@ angular.module('inclusaoDigitalApp')
     $scope.sendEmail = false;
     $scope.messageDetail = false;
     $scope.message = {};
-    $scope.ref = new Firebase('https://blistering-torch-9877.firebaseio.com');
+    $scope.ref = new Firebase('https://inclusao-digital.firebaseio.com');
     $scope.messagesRef = $scope.ref.child('messages');
+    $scope.usersRef = $scope.ref.child('users');
+    $scope.date = Date();
+    
 
     // identify the author
-    $scope.message.author = localStorageService.get('email');
+    $scope.message.author = localStorageService.get('user.email');
 
     // $scope.sync = $firebase($scope.ref);
     // $scope.limited = $firebase($scope.ref.limitToLast(10));
@@ -22,7 +25,7 @@ angular.module('inclusaoDigitalApp')
     $scope.received = {};
 
     $scope.refreshMessages = function () {
-      $scope.ref.on('child_added', function(snapshot) {
+      $scope.messagesRef.on('value', function(snapshot) {
         $scope.messages = snapshot.val();
         var j = 0;
         var k = 0;
@@ -37,6 +40,12 @@ angular.module('inclusaoDigitalApp')
             k = k+1;
           }
         }
+      });
+    };
+
+    $scope.getUsers = function() {
+      $scope.usersRef.on('value', function(snapshot) {
+        $scope.users = snapshot.val();
       });
     };
     
@@ -57,8 +66,9 @@ angular.module('inclusaoDigitalApp')
         $scope.messageDetail = false;
       };
 
-    $scope.showMessageDetail = function() {
+    $scope.showMessageDetail = function(row) {
         $scope.messageDetail = true;
+        $scope.detail = row;
       };
 
     $scope.sendMessage = function() {
@@ -66,7 +76,8 @@ angular.module('inclusaoDigitalApp')
         author: $scope.message.author,
         receiver: $scope.message.receiver,
         subject: $scope.message.subject,
-        contentOfMessage: $scope.message.contentOfMessage
+        contentOfMessage: $scope.message.contentOfMessage,
+        data: Date()
       });
       // clean
       $scope.message.receiver = null;
@@ -76,11 +87,6 @@ angular.module('inclusaoDigitalApp')
     };
       
     $scope.refreshMessages();
-    // message example
+    $scope.getUsers();
 
-
-    // $scope.message.subject = 'Primeiro e-mail';
-    // $scope.message.author = 'Prof. Mariani';
-    // $scope.message.day = '10/10/2014';
-    // $scope.message.contentOfMessage = 'Olá, \n caros alunos do ID, \n as aulas começam amanhã!';
   });

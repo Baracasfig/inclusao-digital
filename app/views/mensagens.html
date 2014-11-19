@@ -1,27 +1,3 @@
-<div class="navbar navbar-default navbar-static-top">
-  <style>
-    .body{padding-top:70px}
-  </style>
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Inclusão Digital</a>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right" ng-controller="LoginController">
-        <li><a href="#/mensagens">Mensagens</a></li>
-        <li ng-cloak ng-show-auth="login"><a href="#" ng-click="logout()">Log Out</a></li>
-        <li ng-cloak ng-show-auth="['logout','error']"><a href="#/login">Log In</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <div class="container">
 
   <div class="row">
@@ -46,7 +22,7 @@
   </div>
 
 
-  <div ng-show="messageType == 'enviadas' &amp;&amp; !messageDetail">
+  <div ng-show="messageType == 'recebidas' &amp;&amp; !messageDetail">
     <div class="row">
       <div class="col-md-12">
         <table class="table">
@@ -59,9 +35,9 @@
           </thead>
           <tbody>
             <tr ng-repeat="row in received">
-              <td><a ng-click="showMessageDetail()">{{row.subject}}</a></td>
+              <td><a ng-click="showMessageDetail(row)">{{row.subject}}</a></td>
               <td>{{row.receiver}}</td>
-              <td>{{row.contentOfMessage}}</td>
+              <td>{{row.data}}</td>
             </tr>
           </tbody>
         </table>
@@ -82,9 +58,9 @@
           </thead>
           <tbody>
             <tr ng-repeat="row in sent">
-              <td><a ng-click="showMessageDetail()">{{row.subject}}</a></td>
+              <td><a ng-click="showMessageDetail(row)">{{row.subject}}</a></td>
               <td>{{row.receiver}}</td>
-              <td>{{row.contentOfMessage}}</td>
+              <td>{{row.data}}</td>
             </tr>
           </tbody>
         </table>
@@ -98,10 +74,7 @@
         <form role="form">
           <div class="form-group"><label>Destinatários(s)</label>
             <select class="form-control" ng-model="message.receiver">
-              <option>Todos os participantes</option>
-              <option>Mariani</option>
-              <option>Lucas</option>
-              <option>João</option>
+              <option ng-repeat="row in users">{{row.email}}</option>
             </select>
           </div>
           <div class="form-group">
@@ -125,11 +98,13 @@
   <div ng-show="messageDetail == true">
     <div class="row">
       <div class="col-md-12">
-        <b>Assunto :</b> {{message.subject}}
+        <b>Assunto :</b> {{detail.subject}}
         <br></br>
-        <b>Autor :</b> {{message.author}}
+        <b>Autor :</b> {{detail.author}}
         <br></br>
-        <b>Data :</b> {{message.day}}
+        <b>Data :</b> {{detail.data}}
+        <br></br>
+        <b>Conteúdo da mensagem :</b> {{detail.contentOfMessage}}
       </div>
     </div>
 

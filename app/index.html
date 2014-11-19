@@ -30,6 +30,32 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <div class="navbar navbar-default navbar-static-top">
+      <style>
+        .body{padding-top:70px}
+      </style>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Inclusão Digital</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right" ng-controller="LoginController">
+          <!-- TODO: input person name as "Olá ad@ad.com" and then log out inside it -->
+            <li><a href="#/cadastro">Cadastro</a></li>
+            <li><a href="#/mensagens">Mensagens</a></li>
+            <li ng-cloak ng-show-auth="login"><a href="#" ng-click="logout()">Log Out</a></li>
+            <li ng-cloak ng-show-auth="['logout','error']"><a href="#/login">Log In</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <!-- Add your site or application content here -->
     <div ng-view=""></div>
 

@@ -1,13 +1,10 @@
 <div class="container">
     <div ng-cloak class="row">
         <div class="col-md-12">
-
-            
             <p>&nbsp;</p>
             <form role="form">
                 <fielset>
-                    <legend ng-hide="createMode">Sign In</legend>
-                    <legend ng-show="createMode">Sign Up</legend>
+                    <legend>Sign Up</legend>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -21,16 +18,13 @@
                                 <input class="form-control" type="password" ng-model="pass" />
                             </div>
 
-                            <div class="form-group" ng-show="createMode">
+                            <div class="form-group">
                                 <label>confirm password</label>
                                 <input class="form-control" type="password" ng-model="confirm" />
                             </div>
 
-                            <button class="btn btn-primary" ng-click="loginPassword()" ng-hide="createMode">Log In</button>
-                            <!-- The functionality of adding people to the site should stay with an administrator -->
-                            <!-- <button class="btn btn-default" ng-click="createMode = true" ng-hide="createMode">Register</button> -->
-                            <button class="btn btn-success" ng-show="createMode" ng-click="createAccount()">Create Account</button>
-                            <button class="btn btn-default" ng-show="createMode" ng-click="createMode = false">Cancel</button>
+                            <button class="btn btn-success" ng-click="createAccount()">Create Account</button>
+                            <button class="btn btn-default" ng-click="createMode = false">Cancel</button>
                         </div>
                     </div>
                 </fielset>
